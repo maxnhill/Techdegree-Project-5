@@ -1,10 +1,11 @@
 from models import db, Projects, app
 from flask import (render_template, url_for, request, redirect)
 
+
 @app.route('/')
 def home():
     projects = Projects.query.all()
-    return render_template('index.html')
+    return render_template('index.html', projects=projects)
 
 @app.route('/about')
 def about_me():
@@ -35,7 +36,7 @@ def edit_project(id):
     project = Projects.query.get_or_404(id)
     if request.method == 'POST':
         project.title = request.form['title']
-        project.date == request.form['date']
+        project.date = request.form['date']
         project.description = request.form['description']
         project.github_url = request.form['github_url']
         db.session.commit()
@@ -57,7 +58,7 @@ def not_found(error):
 if __name__ == '__main__':
 
     with app.app_context():
-        Project_1 = Projects(title="Number Guessing Game",
+        project_1 = Projects(title="Number Guessing Game",
                             date = " December, 2022"  , 
                             description='''This project is a number guessing game where the user is 
                             asked to guess a random number between 1 and 20. The game 
@@ -67,10 +68,8 @@ if __name__ == '__main__':
                             (i.e. the lowest number of attempts taken to guess the correct number).''',
                             github_url="https://github.com/maxnhill/Techdegree-Project-1.git", 
                             skills="Python profiency: data types, control structures and exception handling")
-        db.session.add(Project_1)
-        db.session.commit()
             
-        Project_2 = Projects(title="Basketball Game Stats Tool",
+        project_2 = Projects(title="Basketball Game Stats Tool",
                             date = "December, 2022"  , 
                             description='''The program is a data cleaning tool.It begins by cleaning a list of player dictionaries 
                             that contain information such as player names, guardians, experience, and height. 
@@ -79,10 +78,9 @@ if __name__ == '__main__':
                             function that displays statistics for a selected team. ''',
                             github_url="https://github.com/maxnhill/Techdegree-Treehouse-Project-2.git", 
                             skills="Python profiency: data types, functions, and command-line interfaces")
-        db.session.add(Project_2)
-        db.session.commit()
+       
         
-        Project_3 = Projects(title="Hangman Game",
+        project_3 = Projects(title="Hangman Game",
                             date = " January, 2023"  , 
                             description='''This code defines a Hangman game that uses phrases as the words to be guessed. 
                                             It starts by displaying a welcome message, explaining the rules, and selecting a 
@@ -92,10 +90,9 @@ if __name__ == '__main__':
                             github_url="https://github.com/maxnhill/Techdegree-Project-3.git", 
                             skills='''Python profiency: data types, functions, and control structures.
                                         Object-oriented programming (OOP)''')
-        db.session.add(Project_3)
-        db.session.commit()
+      
 
-        Project_4 = Projects(title="Store Inventory with SQLAlchemy",
+        project_4 = Projects(title="Store Inventory with SQLAlchemy",
                             date = " February, 2023"  , 
                             description='''The project is a simple inventory management system that allows users to view 
                                             and add products to a database. The code uses Python and SQLite to manage the database, 
@@ -103,8 +100,12 @@ if __name__ == '__main__':
                             github_url="https://github.com/maxnhill/Techdegree-Project-4.git", 
                             skills='''Python profiency, Object-Oriented Programming (OOP), 
                                         SQL, Database management, Data cleaning, and Version control ''')
-        db.session.add(Project_4)
-        db.session.commit()
+        my_projects = [project_1,project_2, project_3, project_4 ]
+        for project in my_projects:
+            existing_project = Projects.query.filter_by(title=project.title).first()
+            if existing_project is None:
+                db.session.add(project)
+                db.session.commit()
         db.create_all()
     app.run(debug=True, port=8000, host='0.0.0.0')
 
