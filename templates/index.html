@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>Portfolio</title>
-        <meta name="description" content="A portfolio of my work">
+        <meta name="description" content="My Pythonista Portfolio">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
@@ -17,19 +17,12 @@
         <section class="header">
             <h1>Python Developer</h1>
             <p>A former DIII football player starts coding: where algorithms meet athleticism.</p>
-            <img src="templates/IMG_2360.JPG">
+            <img src="static/cartoon_me.png">
         </section>
         <section id="about">
-            <h2>About Me</h2>
+            <a href="{{ url_for('about_me') }}"><h2>About Me</h2></a>
             <p>
-                Hello, my name is Maximilian Hill. I am a graduate
-                of the University of Michigan-Gerald R. Ford School of Public Policy and 
-                Grinnell College with a diverse background in public policy, research, and 
-                leadership. I have experience in economics tutoring, financial analysis, 
-                and co-authoring case studies. Too boot, I am accomplished athlete and 
-                proficient in R, Stata, Python, Flask, SQLAlchemy, GitHub, and Visual Studio Code. 
-                My skills and passion  make me an ideal candidate for any organization seeking a 
-                talented and dedicated individual.
+                Hello, my name is Maximilian Hill. I am a graduate of the University of Michigan-Gerald R. Ford School of Public Policy and  Grinnell College with a diverse background in public policy, research, and leadership. I have experience in economics tutoring, financial analysis, and co-authoring case studies. Too boot, I am accomplished athlete and proficient in R, Stata, Python, Flask, SQLAlchemy, GitHub, and Visual Studio Code. My skills and passion  make me an ideal candidate for any organization seeking a talented and dedicated individual.
             </p>
             <div id="triangle1"></div>
             <div id="triangle2"></div>
@@ -41,8 +34,9 @@
                 <li>Python</li>
                 <li>Flask</li>
                 <li>SQLAlchemy</li>
-                <li>GitHub</li>
-                <li>Visual Studio Code</li>
+                <li>Stata</li>
+                <li>R</li>
+                <li>Tableau</li>
             </ul>
         </section>
         <section id="projects">
@@ -50,77 +44,22 @@
             <i class="fas fa-file-code"></i>
             <h2>Projects</h2>
             <div id="project-list">
-                <div id="project1" class="a-project">
-                    <h3>Number Guessing Game</h3>
-                    <a href="https://github.com/maxnhill/Techdegree-Project-1.git" class="github-btn">
-                        <i class="fab fa-github"></i>
-                        View on GitHub
-                    </a>
-                    <p>
-                        This project is a number guessing game where the user is 
-                        asked to guess a random number between 1 and 20. The game 
-                        provides feedback to the user on whether their guess is too high or too low, 
-                        and how many attempts they have made. The user can choose to play the game 
-                        multiple times and the program will keep track of their high score
-                         (i.e. the lowest number of attempts taken to guess the correct number). 
-                    </p>
-                    <p>
-                        Skills: Python profiency: data types, control structures and exception handling
-                         
-                    </p>
-                </div>
-                <div id="project2" class="a-project">
-                    <h3>Basketball Game Stats Tool</h3>
-                    <a href="https://github.com/maxnhill/Techdegree-Treehouse-Project-2.git" class="github-btn">
-                        <i class="fab fa-github"></i>
-                        View on GitHub
-                    </a>
-                    <p>
-                        The program is a data cleaning tool. It begins by cleaning a list of player dictionaries 
-                        that contain information such as player names, guardians, experience, and height. 
-                        The cleaned list is then used to create balanced teams of six players each. 
-                        The program has a function that extracts player names from the teams, and another 
-                        function that displays statistics for a selected team. 
-                    </p>
-                    <p>
-                        Skills: Python profiency: data types, functions, and command-line interfaces
-                    </p>
-                </div>
-                <div id="project3" class="a-project">
-                    <h3>Hangman Game</h3>
-                    <a href="https://github.com/maxnhill/Techdegree-Project-3.git" class="github-btn">
-                        <i class="fab fa-github"></i>
-                        View on GitHub
-                    </a>
-                    <p>
-                        This code defines a Hangman game that uses phrases as the words to be guessed. 
-                        It starts by displaying a welcome message, explaining the rules, and selecting a 
-                        random phrase from a list. The player then guesses letters to complete the phrase
-                        and the game continues until the player correctly guesses the phrase or exceeds the 
-                        maximum number of incorrect guesses. The player can choose to play again or exit the game. 
-                    </p>
-                    <p>
-                        Skills: Python profiency: data types, functions, and control structures. 
-                        Object-oriented programming (OOP)
-                    </p>
-                </div>
-                <div id="project4" class="a-project">
-                    <h3> Store Inventory with SQLAlchemy </h3>
-                    <a href="https://github.com/maxnhill/Techdegree-Project-4.git" class="github-btn">
-                        <i class="fab fa-github"></i>
-                        View on GitHub
-                    </a>
-                    <p>
-                        The project is a simple inventory management system that allows users to view 
-                        and add products to a database. The code uses Python and SQLite to manage the database, 
-                        and SQLAlchemy is used as an ORM to interact with the database.
-
- 
-                    </p>
-                    <p>
-                        Skills: Python profiency, Object-Oriented Programming (OOP), 
-                        SQL, Database management, Data cleaning, and Version control 
-                    </p>
+                {% for project in projects %}
+                    <div id="project{{project.index(project) + 1}}" class="a-project">
+                        <a href="{{ url_for('project', id = project.id) }}"></a>
+                        <h3>{{ project.title }}</h3>
+                        <a href="{{project.github_url}}" class="github-btn">
+                            <i class="fab fa-github"></i>
+                            View on GitHub
+                        </a>
+                        <p> 
+                            {{ project.description }} 
+                        </p>
+                        <p> 
+                            Skills: {{ project.skills}}
+                        </p>
+                {% endfor %}
+                        
                 </div>
             </div>
             <div id="triangle4"></div>
@@ -129,7 +68,7 @@
             <i class="fas fa-paper-plane"></i>
             <h2>Contact Me</h2>
             <p>
-                Please feel free to email me for personal or professional reasons
+                Please feel free to reach out!
             </p>
             <p>
                 <i class="fas fa-envelope"></i>
