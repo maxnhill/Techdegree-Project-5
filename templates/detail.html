@@ -24,8 +24,8 @@
     />
     <link rel="stylesheet" href="/static/css/styles.css" />
   </head>
-  {% endblock %}
-  {% block content %}
+{% endblock %}
+{% block content %}
   <section class="header">
     <h1>{{ project.title }}</h1>
     <p>{{ project.date }}</p>
@@ -34,7 +34,7 @@
             View on GitHub
         </a>
         <ul class="project-skills">
-            {% for skill in project.skills %}
+            {% for skill in project.skills.split(',') %}
                 <li>{{ skill }}</li>
             {% endfor %}
         </ul>
@@ -55,4 +55,4 @@
             Delete
         </a>
     </section>
-{{% endblock %}}
+{% endblock %}

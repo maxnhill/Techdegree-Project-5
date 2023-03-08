@@ -1,6 +1,5 @@
 {% extends 'layout.html' %} 
 {% block head %}
-<!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8">
@@ -10,16 +9,16 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="/styles.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.min.js"></script
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.min.js"></script>
     </head>
     {% endblock %} 
     {% block content %}
         <section class="header">
             <h1>Python Developer</h1>
             <p>A former DIII football player starts coding: where algorithms meet athleticism.</p>
-            <img src="static/cartoon_me.png">
+            <img src="/static/cartoon_me.png">
         </section>
         <section id="about">
             <a href="{{ url_for('about_me') }}"><h2>About Me</h2></a>
@@ -47,15 +46,14 @@
             <h2>Projects</h2>
             <div id="project-list">
                 {% for project in projects %}
-                    <div id="project{{project.id}}" class="a-project">
-                        <a href="{{ url_for('project', id = project.id) }}"></a>
-                        <h3>{{ project.title }}</h3>
-                        <a href="{{project.github_url}}" class="github-btn">
-                            <i class="fab fa-github"></i>
-                            View on GitHub
+                <div id="project{{project.id}}" class="a-project">
+                    <a href="{{ url_for('project', id = project.id) }}"><h3>{{ project.title }}</h3></a>    
+                    <a href="{{project.github_url}}" class="github-btn">
+                        <i class="fab fa-github"></i>
+                        View on GitHub
                         </a>
                         <p> 
-                            {{ project.description }} 
+                            Description: {{ project.description }} 
                         </p>
                         <p> 
                             Skills: {{ project.skills}}
