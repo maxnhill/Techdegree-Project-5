@@ -46,7 +46,7 @@
             <h2>Projects</h2>
             <div id="project-list">
                 {% for project in projects %}
-                <div id="project{{project.id}}" class="a-project">
+                <div id="project{{projects.id}}" class="a-project">
                     <a href="{{ url_for('project', id = project.id) }}"><h3>{{ project.title }}</h3></a>    
                     <a href="{{project.github_url}}" class="github-btn">
                         <i class="fab fa-github"></i>

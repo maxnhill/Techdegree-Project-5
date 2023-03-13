@@ -2,11 +2,10 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 
-
+db = SQLAlchemy()
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///projects.db'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-db = SQLAlchemy(app)
+db.init_app(app)
 
 class Projects(db.Model):
     id = db.Column(db.Integer, primary_key = True)
@@ -15,6 +14,7 @@ class Projects(db.Model):
     description = db.Column('Description', db.String())
     skills = db.Column('Skills Practiced', db.String())
     github_url = db.Column('Github Link', db.String())
+
 
 
  
