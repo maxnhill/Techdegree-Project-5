@@ -9,10 +9,10 @@ def home():
     projects = Projects.query.all()
     return render_template('index.html', projects=projects)
 
+
 @app.route('/about')
 def about_me():
     return render_template('about.html')
-
 
 
 @app.route('/projects/new', methods=['GET', 'POST'])
@@ -28,10 +28,12 @@ def add_project():
     else:
         return render_template('projectform.html')
 
+
 @app.route('/projects/<id>')
 def project(id):
     project = Projects.query.get_or_404(id)
     return render_template('detail.html', project=project)
+
 
 @app.route('/projects/<id>/edit', methods=['GET', 'POST'])
 def edit_project(id):
@@ -46,6 +48,7 @@ def edit_project(id):
     else:
         return render_template('projectform.html', project=project)
 
+
 @app.route('/projects/<id>/delete')
 def delete_project(id):
     project = Projects.query.get_or_404(id)
@@ -53,9 +56,11 @@ def delete_project(id):
     db.session.commit()
     return redirect(url_for('home'))
 
+
 @app.errorhandler(404)
 def not_found(error):
     return render_template('404.html', msg=error), 404
+
 
 if __name__ == '__main__':
     with app.app_context():
@@ -73,7 +78,7 @@ if __name__ == '__main__':
                 
         project_2 = Projects(title="Basketball Game Stats Tool",
                         date = "December, 2022"  , 
-                        description='''The program is a data cleaning tool.It begins by cleaning a list of player dictionaries 
+                        description='''The program is a data cleaning tool. It begins by cleaning a list of player dictionaries 
                         that contain information such as player names, guardians, experience, and height. 
                         The cleaned list is then used to create balanced teams of six players each. 
                         The program has a function that extracts player names from the teams, and another 
@@ -100,9 +105,8 @@ if __name__ == '__main__':
                                     and SQLAlchemy is used as an ORM to interact with the database. ''',
                     github_url="https://github.com/maxnhill/Techdegree-Project-4.git", 
                     skills="Python, Datetime, Object-oriented programming (OOP) Structured Query Langnguage(SQL), Version control")
-        app.run(debug=True, port=8000, host='127.0.0.1')
+        
     
-
         my_projects = [project_1,project_2, project_3, project_4 ]
         for project in my_projects:
             existing_project = Projects.query.filter_by(title=project.title).first()
@@ -110,6 +114,6 @@ if __name__ == '__main__':
                 db.session.add(project)
                 db.session.commit()
         db.create_all()
-    
+        app.run(debug=True, port=8000, host='127.0.0.1')
         
 
