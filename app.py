@@ -1,5 +1,6 @@
 from models import db, Projects, app
 from flask import (render_template, url_for, request, redirect)
+
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///projects.db'
 
 
@@ -75,6 +76,7 @@ if __name__ == '__main__':
                                 (i.e. the lowest number of attempts taken to guess the correct number).''',
                                 github_url="https://github.com/maxnhill/Techdegree-Project-1.git", 
                                 skills="Python, Data types, Control structures, Exception handling")
+        
                 
         project_2 = Projects(title="Basketball Game Stats Tool",
                         date = "December, 2022"  , 
@@ -104,7 +106,7 @@ if __name__ == '__main__':
                                     and add products to a database. The code uses Python and SQLite to manage the database, 
                                     and SQLAlchemy is used as an ORM to interact with the database. ''',
                     github_url="https://github.com/maxnhill/Techdegree-Project-4.git", 
-                    skills="Python, Datetime, Object-oriented programming (OOP) Structured Query Langnguage(SQL), Version control")
+                    skills="Python, Datetime, Object-oriented programming (OOP), Structured Query Langnguage(SQL), Version control")
         
     
         my_projects = [project_1,project_2, project_3, project_4 ]
