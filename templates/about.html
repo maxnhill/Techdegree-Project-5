@@ -1,0 +1,40 @@
+{% extends 'layout.html' %} 
+{% block head %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Portfolio</title>
+        <meta name="description" content="A portfolio of my work">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+        <link rel="stylesheet" href="/static/styles.css">
+    </head>
+{% endblock %} 
+{% block content %}
+    <section class="header">
+        <h1>Maximilian Hill</h1>
+        <p>Currently looking for analytics orintend career in finance, analytics, or sports.</p>
+        <img src="/static/headshot.png" alt="Headshot of myself" style="display: block; margin: 0 auto; border: 2px solid black;">
+
+    </section>
+    <section id="about-page">
+        <div id="triangle7"></div>
+        <div id="triangle8"></div>
+        <div class="about-me">
+            <h2>About Me</h2>
+            <p>
+                As a recent graduate with a bachelor's degree in Political Science and a Master's degree in Public Policy, I have gained expertise in data management, fiscal analysis, and economic analysis. Additionally, I have recently learned Python to enhance my competitive edge in the job market. While I am currently unemployed due to unexpected circumstances, I am open to a variety of career paths as long as they provide me with a fulfilling life. I value the importance of work-life balance and strive to live by the principle of "working to live, not living to work."
+            </p>
+            <p>
+                Outside of my professional pursuits, I am a passionate novice street photographer, an amateur chef, and a neo-phyte MMA practitioner. My recent six-month journey to study and observe masculinity through martial arts in Thailand, Senegal, Portugal, and Brazil as a Thomas J. Watson awardee has broadened my perspective and enriched my life. As a layperson theologian, I also enjoy exploring and reflecting on the spiritual aspects of life.
+            </p>
+            <p>
+                Overall, I am a versatile and enthusiastic individual with a diverse range of interests and experiences. I am excited to bring my skills and passion to new opportunities and make a positive impact in the world.
+            </p>
+        </div>
+        <a href="/static/Resume.pdf"><i class="far fa-file"></i>Resume</a>
+    </section>
+{% endblock %}
