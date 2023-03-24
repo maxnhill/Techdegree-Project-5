@@ -1,5 +1,6 @@
 from models import db, Projects, app
 from flask import (render_template, url_for, request, redirect)
+from formatdate import format_date
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///projects.db'
 
@@ -50,7 +51,8 @@ def edit_project(id):
         db.session.commit()
         return redirect(url_for('home', id=id))
     else:
-        return render_template('editproject.html', project=project)
+        return render_template('editproject.html', project=project, date=project.date)
+
 
 
 @app.route('/projects/<id>/delete')
@@ -70,7 +72,7 @@ if __name__ == '__main__':
     with app.app_context():
         db.create_all()
         project_1 = Projects(title="Number Guessing Game",
-                                date = " December, 2022"  , 
+                                date =("December, 2022" ) , 
                                 description='''This project is a number guessing game where the user is 
                                 asked to guess a random number between 1 and 20. The game 
                                 provides feedback to the user on whether their guess is too high or too low, 
@@ -82,7 +84,7 @@ if __name__ == '__main__':
         
                 
         project_2 = Projects(title="Basketball Game Stats Tool",
-                        date = "December, 2022"  , 
+                        date = ("December, 2022" )  , 
                         description='''The program is a data cleaning tool. It begins by cleaning a list of player dictionaries 
                         that contain information such as player names, guardians, experience, and height. 
                         The cleaned list is then used to create balanced teams of six players each. 
@@ -93,7 +95,7 @@ if __name__ == '__main__':
 
 
         project_3 = Projects(title="Hangman Game",
-                        date = " January, 2023"  , 
+                        date = ("January, 2023" )  , 
                         description='''This code defines a Hangman game that uses phrases as the words to be guessed. 
                                         It starts by displaying a welcome message, explaining the rules, and selecting a 
                                         random phrase from a list. The player then guesses letters to complete the phrase
@@ -104,7 +106,7 @@ if __name__ == '__main__':
 
 
         project_4 = Projects(title="Store Inventory with SQLAlchemy",
-                    date = " February, 2023"  , 
+                    date = ("February, 2023" )  , 
                     description='''The project is a simple inventory management system that allows users to view 
                                     and add products to a database. The code uses Python and SQLite to manage the database, 
                                     and SQLAlchemy is used as an ORM to interact with the database. ''',
