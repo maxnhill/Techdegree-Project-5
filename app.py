@@ -21,7 +21,7 @@ def about_me():
 def add_project():
     if request.method == 'POST':
         title = request.form['title']
-        date = format_date(request.form['date'])
+        date = request.form['date']
         skills = request.form['skills']
         description = request.form['desc']
         github_url = request.form['github']
@@ -45,13 +45,13 @@ def edit_project(id):
     if request.method == 'POST':
         project.title = request.form['title']
         project.skills = request.form['skills']
-        project.date = format_date(request.form['date'])
         project.description = request.form['desc']
         project.github_url = request.form['github']
+        project.date = format_date(request.form['date'])
         db.session.commit()
-        return redirect(url_for('home', id=id))
-    else:
-        return render_template('editproject.html', project=project, date=project.date)
+        db.session.commit()
+        return redirect(url_for('index'))
+    return render_template('edit_project.html', project=project)
 
 
 

@@ -12,7 +12,7 @@ db.init_app(app)
 class Projects(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column('Title', db.String())
-    date = db.Column('Date',db.DateTime, default=datetime.utcnow().isoformat())
+    date = db.Column('Date', db.DateTime, default=datetime.utcnow)
     description = db.Column('Description', db.String())
     skills = db.Column('Skills Practiced', db.String())
     github_url = db.Column('Github Link', db.String())
