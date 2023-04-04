@@ -18,4 +18,4 @@ class Projects(db.Model):
     github_url = db.Column('Github Link', db.String())
 
     def __repr__(self):
-        return f'<Title: {self.title} Date:{self.date} Description: {self.description} Skills: {self.skills} Github Link: {self.github_url}>'
+        return f'<Title: {self.title} Date:{self.date} Description: {self.description} Skills: {self.skills} Github Link: {self.github_url}>' 
