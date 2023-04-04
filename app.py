@@ -50,7 +50,7 @@ def edit_project(id):
         project.date = request.form['date']
         db.session.commit()
         return redirect(url_for('index'))
-    return render_template('edit_project.html', project=project)
+    return render_template('editproject.html', project=project)
 
 
 
